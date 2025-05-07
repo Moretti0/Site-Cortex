@@ -1,0 +1,25 @@
+<?php
+/** @var \Magento\Backend\Block\Template $block */
+?>
+<div class="admin__fieldset">
+    <form method="post" action="<?= $block->getUrl('cortex_pdf/templateconfig/runGenerateByCategory') ?>" enctype="multipart/form-data">
+        <?= $block->getBlockHtml('formkey') ?>
+        <div class="admin__field field">
+            <label class="label" for="category_id"><span><?= __('Categoria') ?></span></label>
+            <div class="control">
+                <input type="text" name="category_id" id="category_id" required class="admin__control-text" placeholder="ID da categoria" />
+            </div>
+        </div>
+        <div class="admin__field field">
+            <label class="label" for="template_id"><span><?= __('Template') ?></span></label>
+            <div class="control">
+                <input type="text" name="template_id" id="template_id" required class="admin__control-text" placeholder="ID do template" />
+            </div>
+        </div>
+        <div class="actions">
+            <button type="submit" class="action-default scalable action-primary">
+                <span><?= __('Gerar PDFs') ?></span>
+            </button>
+        </div>
+    </form>
+</div>

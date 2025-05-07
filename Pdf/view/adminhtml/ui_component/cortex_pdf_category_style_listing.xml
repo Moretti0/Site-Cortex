@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">cortex_pdf_category_style_listing.cortex_pdf_category_style_listing_data_source</item>
+            <item name="deps" xsi:type="string">cortex_pdf_category_style_listing.cortex_pdf_category_style_listing_data_source</item>
+        </item>
+        <item name="spinner" xsi:type="string">cortex_pdf_category_style_listing_columns</item>
+    </argument>
+
+    <dataSource name="cortex_pdf_category_style_listing_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Cortex\Pdf\Model\ResourceModel\Category\Grid\CategoryStyleCollection</argument>
+            <argument name="name" xsi:type="string">cortex_pdf_category_style_listing_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="update_url" xsi:type="url" path="mui/index/render"/>
+                </item>
+            </argument>
+        </argument>
+    </dataSource>
+
+    <columns name="cortex_pdf_category_style_listing_columns">
+        <column name="category_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID Categoria</label>
+                <sortOrder>10</sortOrder>
+            </settings>
+        </column>
+        <column name="style_name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Nome do Estilo</label>
+                <sortOrder>20</sortOrder>
+            </settings>
+        </column>
+        <column name="template_id">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">ID do Template</label>
+                <sortOrder>30</sortOrder>
+            </settings>
+        </column>
+    </columns>
+</listing>

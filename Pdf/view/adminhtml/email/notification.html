@@ -1,0 +1,28 @@
+<!--@subject Notificação de Geração de PDF @-->
+<!--@vars {
+"var sku":"SKU do Produto",
+"var pdf_url":"URL do PDF",
+"var created_at":"Data de Criação"
+} @-->
+
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #1979c3;">Notificação de Geração de PDF</h2>
+    
+    <p>Olá,</p>
+    
+    <p>O PDF para o produto com SKU <strong>{{var sku}}</strong> foi gerado com sucesso.</p>
+    
+    <div style="background-color: #f8f8f8; padding: 15px; margin: 20px 0; border-radius: 5px;">
+        <p><strong>Detalhes:</strong></p>
+        <ul style="list-style: none; padding: 0;">
+            <li><strong>SKU:</strong> {{var sku}}</li>
+            <li><strong>Data de Geração:</strong> {{var created_at}}</li>
+            <li><strong>URL do PDF:</strong> <a href="{{var pdf_url}}">{{var pdf_url}}</a></li>
+        </ul>
+    </div>
+    
+    <p>Você pode acessar o PDF através do link acima.</p>
+    
+    <p>Atenciosamente,<br>
+    Sistema de Geração de PDF</p>
+</div> 

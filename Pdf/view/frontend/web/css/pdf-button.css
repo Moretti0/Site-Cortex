@@ -1,0 +1,44 @@
+.product-pdf-download {
+    --pdf-button-bg: #1979c3;
+    --pdf-button-hover-bg: #006bb4;
+    --pdf-button-active-bg: #005694;
+}
+
+.product-pdf-download .action.pdf-custom-button.loading {
+    position: relative;
+    pointer-events: none;
+    opacity: 0.8;
+}
+
+.product-pdf-download .action.pdf-custom-button.loading:after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 10px;
+    top: 50%;
+    margin-top: -8px;
+    background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" fill="none" stroke="%23fff" stroke-width="10" r="35" stroke-dasharray="165 57"/></svg>');
+    background-size: contain;
+    animation: pdf-button-loading 1s linear infinite;
+}
+
+@keyframes pdf-button-loading {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* Tema Escuro */
+.theme-dark .product-pdf-download .action.pdf-custom-button {
+    --pdf-button-bg: #2c2c2c;
+    --pdf-button-hover-bg: #404040;
+    --pdf-button-active-bg: #1a1a1a;
+}
+
+/* Tema Alto Contraste */
+.high-contrast .product-pdf-download .action.pdf-custom-button {
+    --pdf-button-bg: #000000;
+    --pdf-button-hover-bg: #333333;
+    --pdf-button-active-bg: #000000;
+    border-width: 2px;
+} 

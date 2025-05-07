@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Email:etc/email_templates.xsd">
+    <template id="cortex_pdf_notification_email_template" label="Notificação de Geração de PDF" file="notification.html" type="html" module="Cortex_Pdf" area="adminhtml"/>
+    <template id="cortex_pdf_error_email_template" label="Erro na Geração de PDF" file="error.html" type="html" module="Cortex_Pdf" area="adminhtml"/>
+    <template id="cortex_pdf_notification_error_email_template" label="Notificação de Erro na Geração de PDF" file="notification_error.html" type="html" module="Cortex_Pdf" area="adminhtml"/>
+</config> 

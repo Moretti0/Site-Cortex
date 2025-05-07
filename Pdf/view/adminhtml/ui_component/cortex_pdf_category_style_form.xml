@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">category_style_form.category_style_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Estilo por Categoria</item>
+    </argument>
+    <dataSource name="category_style_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Cortex\Pdf\Ui\DataProvider\CategoryStyleDataProvider</argument>
+            <argument name="name" xsi:type="string">category_style_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Configurações Visuais</label>
+        </settings>
+
+        <field name="category_id">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">ID da Categoria</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+
+        <field name="header_image">
+            <formElement>imageUploader</formElement>
+            <settings>
+                <label translate="true">Imagem de Cabeçalho</label>
+                <dataType>string</dataType>
+                <uploaderConfig>
+                    <param xsi:type="url" name="url">cortex_pdf/categorystyle/upload</param>
+                </uploaderConfig>
+            </settings>
+        </field>
+
+        <field name="background_image">
+            <formElement>imageUploader</formElement>
+            <settings>
+                <label translate="true">Imagem de Fundo</label>
+                <dataType>string</dataType>
+                <uploaderConfig>
+                    <param xsi:type="url" name="url">cortex_pdf/categorystyle/upload</param>
+                </uploaderConfig>
+            </settings>
+        </field>
+
+        <field name="footer_text">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Texto do Rodapé</label>
+            </settings>
+        </field>
+    </fieldset>
+</form>

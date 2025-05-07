@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <!-- Interface para o gerador de PDF -->
+    <preference for="Cortex\Pdf\Api\PdfGeneratorInterface" 
+                type="Cortex\Pdf\Model\WkhtmltopdfGenerator"/>
+
+    <!-- Interface para o repositório de histórico -->
+    <preference for="Cortex\Pdf\Api\HistoryRepositoryInterface" 
+                type="Cortex\Pdf\Model\HistoryRepository"/>
+
+    <!-- Comandos de console -->
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="cortex_pdf_generate" xsi:type="object">Cortex\Pdf\Console\Command\GeneratePdf</item>
+                <item name="cortex_pdf_statistics" xsi:type="object">Cortex\Pdf\Console\Command\PdfStatistics</item>
+                <item name="cortex_pdf_clean_cache" xsi:type="object">Cortex\Pdf\Console\Command\CleanCache</item>
+                <item name="cortex_pdf_manage_templates" xsi:type="object">Cortex\Pdf\Console\Command\ManageTemplates</item>
+                <item name="cortex_pdf_process_queue" xsi:type="object">Cortex\Pdf\Console\Command\ProcessQueue</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Logger personalizado -->
+    <virtualType name="CortexPdfLogger" type="Magento\Framework\Logger\Monolog">
+        <arguments>
+            <argument name="name" xsi:type="string">cortex_pdf</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Cortex\Pdf\Logger\Handler</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Sistema de arquivos -->
+    <type name="Cortex\Pdf\Model\PdfFileSystem">
+        <arguments>
+            <argument name="logger" xsi:type="object">CortexPdfLogger</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Model\PdfGenerator">
+        <arguments>
+            <argument name="logger" xsi:type="object">CortexPdfLogger</argument>
+            <argument name="historyRepository" xsi:type="object">Cortex\Pdf\Model\HistoryRepository</argument>
+            <argument name="pdfCache" xsi:type="object">Cortex\Pdf\Model\PdfCache</argument>
+            <argument name="statistics" xsi:type="object">Cortex\Pdf\Model\Statistics</argument>
+            <argument name="fileSystem" xsi:type="object">Cortex\Pdf\Model\PdfFileSystem</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Console\Command\GeneratePdf">
+        <arguments>
+            <argument name="pdfGenerator" xsi:type="object">Cortex\Pdf\Model\PdfGenerator</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Console\Command\PdfStatistics">
+        <arguments>
+            <argument name="statistics" xsi:type="object">Cortex\Pdf\Model\Statistics</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Console\Command\CleanCache">
+        <arguments>
+            <argument name="pdfCache" xsi:type="object">Cortex\Pdf\Model\PdfCache</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Console\Command\ManageTemplates">
+        <arguments>
+            <argument name="pdfTemplate" xsi:type="object">Cortex\Pdf\Model\PdfTemplate</argument>
+        </arguments>
+    </type>
+
+    <type name="Cortex\Pdf\Model\WkhtmltopdfGenerator">
+        <arguments>
+            <argument name="scopeConfig" xsi:type="object">Magento\Framework\App\Config\ScopeConfigInterface</argument>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem</argument>
+            <argument name="logger" xsi:type="object">Psr\Log\LoggerInterface</argument>
+        </arguments>
+    </type>
+
+    <!-- Config Source Model para TemplateOptions -->
+    <type name="Cortex\Pdf\Model\Config\Source\TemplateOptions">
+        <arguments>
+            <argument name="templateRepository" xsi:type="object">Cortex\Pdf\Model\TemplateRepository</argument>
+        </arguments>
+    </type>
+
+    <!-- DataProvider para templates em arquivos JSON -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="data" xsi:type="array">
+                <item name="pdf_template_listing_data_source" xsi:type="array">
+                    <item name="class" xsi:type="string">Cortex\Pdf\Ui\DataProvider\TemplateDataProvider</item>
+                    <item name="name" xsi:type="string">pdf_template_listing_data_source</item>
+                    <item name="primaryFieldName" xsi:type="string">id</item>
+                    <item name="requestFieldName" xsi:type="string">id</item>
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    
+    <type name="Cortex\Pdf\Ui\DataProvider\TemplateDataProvider">
+        <arguments>
+            <argument name="pdfTemplate" xsi:type="object">Cortex\Pdf\Model\PdfTemplate</argument>
+            <argument name="logger" xsi:type="object">CortexPdfLogger</argument>
+        </arguments>
+    </type>
+    <preference for="Cortex\Pdf\Api\CategoryStyleRepositoryInterface" type="Cortex\Pdf\Model\Category\CategoryStyleRepository"/>
+</config> 

@@ -1,0 +1,27 @@
+{
+    "name": "cortex/pdf",
+    "description": "Módulo para geração de PDFs com QR Code",
+    "type": "magento2-module",
+    "version": "1.0.0",
+    "license": [
+        "OSL-3.0",
+        "AFL-3.0"
+    ],
+    "require": {
+        "php": "~7.4.0|~8.1.0",
+        "magento/framework": "*",
+        "magento/module-backend": "*",
+        "magento/module-catalog": "*",
+        "magento/module-store": "*",
+        "endroid/qr-code": "^4.0",
+        "tecnickcom/tcpdf": "^6.6"
+    },
+    "autoload": {
+        "files": [
+            "registration.php"
+        ],
+        "psr-4": {
+            "Cortex\\Pdf\\": ""
+        }
+    }
+} 

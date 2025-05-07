@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Cortex_Pdf::main"
+             title="Cortex PDF"
+             module="Cortex_Pdf"
+             sortOrder="100"
+             resource="Cortex_Pdf::main"/>
+             
+        <add id="Cortex_Pdf::template_config"
+             title="Templates de PDF"
+             module="Cortex_Pdf"
+             sortOrder="10"
+             parent="Cortex_Pdf::main"
+             action="cortex_pdf/templateconfig/index"
+             resource="Cortex_Pdf::template_config"/>
+
+        <add id="Cortex_Pdf::category_style"
+             title="Estilos por Categoria"
+             module="Cortex_Pdf"
+             sortOrder="20"
+             parent="Cortex_Pdf::main"
+             action="cortex_pdf/categorystyle/index"
+             resource="Cortex_Pdf::category_style"/>
+    </menu>
+</config>

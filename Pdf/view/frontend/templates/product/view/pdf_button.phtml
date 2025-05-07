@@ -1,0 +1,16 @@
+<?php
+/**
+ * @var \Cortex\Pdf\Block\Product\View\PdfButton $block
+ */
+?>
+<?php if ($block->isEnabled()): ?>
+    <?php $product = $block->getProduct(); ?>
+    <div class="cortex-pdf-button-container">
+        <button type="button" 
+                class="action primary cortex-pdf-button <?= $block->getCssClass() ?>" 
+                data-product-id="<?= $product ? $product->getId() : $block->getRequest()->getParam('id') ?>"
+                data-mage-init='{"Cortex_Pdf/js/product/pdf-button": {}}'>
+            <span><?= $block->getButtonText() ?></span>
+        </button>
+    </div>
+<?php endif; ?> 

@@ -1,0 +1,65 @@
+.cortex-pdf-generator {
+    margin: 20px 0;
+}
+
+.cortex-pdf-generator .pdf-templates {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.cortex-pdf-generator .pdf-template {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.cortex-pdf-generator .pdf-generate,
+.cortex-pdf-generator .pdf-preview {
+    min-width: 120px;
+}
+
+.cortex-pdf-generator .pdf-loading {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.cortex-pdf-generator .pdf-loading span {
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.pdf-preview-modal .modal-content {
+    padding: 20px;
+}
+
+.pdf-preview-modal iframe {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+@media (max-width: 768px) {
+    .cortex-pdf-generator .pdf-templates {
+        flex-direction: column;
+    }
+
+    .cortex-pdf-generator .pdf-template {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .cortex-pdf-generator .pdf-generate,
+    .cortex-pdf-generator .pdf-preview {
+        width: 100%;
+    }
+} 

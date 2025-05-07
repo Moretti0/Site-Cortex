@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!-- cortex_pdf_template_config_form.xml -->
+<form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">template_config_form.template_config_form_data_source</item>
+        </item>
+        <item name="label" xsi:type="string" translate="true">Editar Template</item>
+    </argument>
+    <dataSource name="template_config_form_data_source">
+        <argument name="dataProvider" xsi:type="configurableObject">
+            <argument name="class" xsi:type="string">Cortex\Pdf\Ui\DataProvider\TemplateConfigDataProvider</argument>
+            <argument name="name" xsi:type="string">template_config_form_data_source</argument>
+            <argument name="primaryFieldName" xsi:type="string">template_id</argument>
+            <argument name="requestFieldName" xsi:type="string">id</argument>
+        </argument>
+    </dataSource>
+    <fieldset name="general">
+        <settings>
+            <label translate="true">Informações Gerais</label>
+        </settings>
+        <field name="name">
+            <argument name="data" xsi:type="array">
+                <item name="options" xsi:type="array"/>
+            </argument>
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Nome</label>
+                <validation>
+                    <rule name="required-entry" xsi:type="boolean">true</rule>
+                </validation>
+            </settings>
+        </field>
+        <field name="layout">
+            <settings>
+                <dataType>text</dataType>
+                <label translate="true">Layout</label>
+            </settings>
+        </field>
+        
+    <field name="json_config_builder" formElement="container">
+        <settings>
+            <label translate="true">Editor Visual de Layout</label>
+            <component>jsonLayoutBuilder</component>
+            <visible>true</visible>
+        </settings>
+    </field>
+
+    <field name="json_config">
+        <argument name="data" xsi:type="array">
+            <item name="config" xsi:type="array">
+                <item name="customEntry" xsi:type="boolean">true</item>
+                <item name="component" xsi:type="string">jsonEditor</item>
+            </item>
+        </argument>
+            <settings>
+                <dataType>textarea</dataType>
+                <label translate="true">Configuração JSON</label>
+                <rows>10</rows>
+            </settings>
+        </field>
+        <field name="is_active">
+            <settings>
+                <dataType>boolean</dataType>
+                <formElement>checkbox</formElement>
+                <label translate="true">Ativo</label>
+                <valueMap>
+                    <map name="true" value="1"/>
+                    <map name="false" value="0"/>
+                </valueMap>
+            </settings>
+        </field>
+    </fieldset>
+</form>

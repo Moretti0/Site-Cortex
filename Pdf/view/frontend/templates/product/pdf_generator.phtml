@@ -1,0 +1,38 @@
+<?php
+/**
+ * @var \Cortex\Pdf\Block\Product\PdfGenerator $block
+ */
+?>
+<?php if ($block->shouldShowButton()): ?>
+<div class="cortex-pdf-generator">
+    <div class="pdf-templates">
+        <?php foreach ($block->getAvailableTemplates() as $template): ?>
+            <div class="pdf-template">
+                <button type="button"
+                        class="action primary pdf-generate"
+                        data-template="<?= $block->escapeHtmlAttr($template) ?>"
+                        data-url="<?= $block->escapeUrl($block->getPdfGenerationUrl($template)) ?>">
+                    <?= $block->escapeHtml($block->getButtonText()) ?> - <?= $block->escapeHtml($template) ?>
+                </button>
+                <button type="button"
+                        class="action secondary pdf-preview"
+                        data-template="<?= $block->escapeHtmlAttr($template) ?>"
+                        data-url="<?= $block->escapeUrl($block->getPdfPreviewUrl($template)) ?>">
+                    <?= $block->escapeHtml(__('Preview')) ?>
+                </button>
+            </div>
+        <?php endforeach; ?>
+    </div>
+</div>
+
+<script type="text/x-magento-init">
+{
+    ".cortex-pdf-generator": {
+        "Cortex_Pdf/js/pdf-generator": {
+            "ajaxUrl": "<?= $block->escapeJs($block->getUrl('cortex_pdf/product/generate')) ?>",
+            "previewUrl": "<?= $block->escapeJs($block->getUrl('cortex_pdf/product/preview')) ?>"
+        }
+    }
+}
+</script>
+<?php endif; ?> 

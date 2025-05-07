@@ -1,0 +1,30 @@
+<!--@subject Notificação de Erro na Geração de PDF @-->
+<!--@vars {
+"var sku":"SKU do Produto",
+"var error_message":"Mensagem de Erro",
+"var created_at":"Data do Erro",
+"var retry_count":"Número de Tentativas"
+} @-->
+
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <h2 style="color: #e02b27;">Notificação de Erro na Geração de PDF</h2>
+    
+    <p>Olá,</p>
+    
+    <p>Ocorreu um erro ao gerar o PDF para o produto com SKU <strong>{{var sku}}</strong>.</p>
+    
+    <div style="background-color: #f8f8f8; padding: 15px; margin: 20px 0; border-radius: 5px;">
+        <p><strong>Detalhes do Erro:</strong></p>
+        <ul style="list-style: none; padding: 0;">
+            <li><strong>SKU:</strong> {{var sku}}</li>
+            <li><strong>Data do Erro:</strong> {{var created_at}}</li>
+            <li><strong>Número de Tentativas:</strong> {{var retry_count}}</li>
+            <li><strong>Mensagem de Erro:</strong> {{var error_message}}</li>
+        </ul>
+    </div>
+    
+    <p>O sistema tentará gerar o PDF novamente automaticamente. Se o problema persistir, por favor verifique os logs do sistema para mais detalhes.</p>
+    
+    <p>Atenciosamente,<br>
+    Sistema de Geração de PDF</p>
+</div> 

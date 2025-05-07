@@ -1,0 +1,47 @@
+.cortex-pdf-template-edit {
+    padding: 20px;
+}
+
+.cortex-pdf-template-edit .fieldset {
+    margin-bottom: 20px;
+}
+
+.cortex-pdf-template-edit .fieldset .legend {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.cortex-pdf-template-edit .field {
+    margin-bottom: 15px;
+}
+
+.cortex-pdf-template-edit .field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+}
+
+.cortex-pdf-template-edit .field input[type="text"] {
+    width: 100%;
+    max-width: 500px;
+}
+
+.cortex-pdf-template-edit .field .admin__field-control {
+    width: 100%;
+}
+
+.cortex-pdf-template-edit .field .admin__field-control .admin__control-textarea {
+    width: 100%;
+    min-height: 500px;
+}
+
+.cortex-pdf-template-edit .page-actions {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+}
+
+.cortex-pdf-template-edit .page-actions .action {
+    margin-right: 10px;
+} 

@@ -1,0 +1,448 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <tab id="cortex" translate="label" sortOrder="100">
+            <label>Cortex</label>
+        </tab>
+        <section id="cortex_pdf" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>PDF Gerador</label>
+            <tab>cortex</tab>
+            <resource>Cortex_Pdf::config</resource>
+            
+            <!-- Grupo: Configurações Gerais -->
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações Gerais</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar Módulo</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="button_text" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto do Botão</label>
+                    <comment>Texto exibido no botão de visualização do PDF</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="button_position" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Posição do Botão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonPosition</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="template_type" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template do PDF</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\LayoutTemplates</source_model>
+                    <comment>Escolha o template que será usado para gerar o PDF</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="use_theme_button" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Usar Estilo do Tema</label>
+                    <comment>Se habilitado, o botão usará o estilo padrão do tema. Se desabilitado, usará o estilo personalizado.</comment>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="button_css_classes" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Classes CSS Adicionais</label>
+                    <comment>Classes CSS adicionais para personalizar o estilo do botão</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="wkhtmltopdf_binary" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Caminho do wkhtmltopdf</label>
+                    <comment>Caminho completo para o executável do wkhtmltopdf (ex: /usr/local/bin/wkhtmltopdf)</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="page_size" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho da Página</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\PageSize</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="orientation" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Orientação</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\PageOrientation</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="margin_top" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Superior (mm)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="margin_right" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Direita (mm)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="margin_bottom" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Inferior (mm)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="margin_left" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Esquerda (mm)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Design do Botão -->
+            <group id="button_design" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Design do Botão</label>
+                <field id="button_color" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor do Botão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonColors</source_model>
+                    <comment>Escolha a cor do botão</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="use_theme_button">0</field>
+                    </depends>
+                </field>
+                <field id="custom_button_color" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor Personalizada</label>
+                    <frontend_model>Cortex\Pdf\Block\System\Config\Form\Field\ColorPicker</frontend_model>
+                    <comment>Defina uma cor personalizada para o botão (formato hexadecimal)</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                        <field id="use_theme_button">0</field>
+                        <field id="button_color">custom</field>
+                    </depends>
+                </field>
+                <field id="button_size" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho do Botão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonSizes</source_model>
+                    <comment>Escolha o tamanho do botão</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="button_animation" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Animação do Botão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonAnimations</source_model>
+                    <comment>Escolha o efeito de animação ao passar o mouse</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="button_icon" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Ícone do Botão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonIcons</source_model>
+                    <comment>Escolha o ícone do botão</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Responsividade -->
+            <group id="responsiveness" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Responsividade</label>
+                <field id="mobile_button_size" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho do Botão em Mobile</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonSizes</source_model>
+                    <comment>Escolha o tamanho do botão em dispositivos móveis</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="mobile_button_position" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Posição do Botão em Mobile</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\ButtonPosition</source_model>
+                    <comment>Escolha a posição do botão em dispositivos móveis</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Acessibilidade -->
+            <group id="accessibility" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Acessibilidade</label>
+                <field id="aria_label" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Rótulo ARIA</label>
+                    <comment>Texto descritivo para leitores de tela</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="keyboard_navigation" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Navegação por Teclado</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Habilitar navegação por teclado (Tab e Enter)</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Design do PDF -->
+            <group id="design" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações de Design</label>
+                
+                <!-- Cores -->
+                <field id="primary_color" translate="label comment" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor Primária</label>
+                    <comment>Cor principal para elementos do PDF (ex: #1979c3)</comment>
+                </field>
+                <field id="secondary_color" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor Secundária</label>
+                    <comment>Cor secundária para elementos do PDF (ex: #006bb4)</comment>
+                </field>
+                <field id="text_color" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor do Texto</label>
+                    <comment>Cor do texto no PDF (ex: #333333)</comment>
+                </field>
+
+                <!-- Fontes -->
+                <field id="font_size_title" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho da Fonte do Título</label>
+                    <comment>Tamanho da fonte para títulos (ex: 18)</comment>
+                </field>
+                <field id="font_size_body" translate="label comment" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho da Fonte do Corpo</label>
+                    <comment>Tamanho da fonte para o texto do corpo (ex: 12)</comment>
+                </field>
+
+                <!-- Layout -->
+                <field id="layout_template" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template de Layout</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\LayoutTemplates</source_model>
+                    <comment>Escolha o template de layout base</comment>
+                </field>
+                <field id="content_width" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Largura do Conteúdo</label>
+                    <validate>validate-number validate-greater-than-zero</validate>
+                    <comment>Largura do conteúdo em porcentagem (ex: 90)</comment>
+                </field>
+
+                <!-- Espaçamento -->
+                <field id="margin_top" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Superior</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Margem superior em mm</comment>
+                </field>
+                <field id="margin_bottom" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem Inferior</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Margem inferior em mm</comment>
+                </field>
+
+                <!-- Tabelas -->
+                <field id="table_style" translate="label" type="select" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Estilo da Tabela</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\TableStyles</source_model>
+                    <comment>Estilo visual para tabelas</comment>
+                </field>
+                <field id="table_header_bg" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Cor de Fundo - Cabeçalho Tabela</label>
+                    <frontend_model>Cortex\Pdf\Block\System\Config\Form\Field\ColorPicker</frontend_model>
+                </field>
+                <field id="table_row_alternate" translate="label" type="select" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Linhas Alternadas</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Alternar cores das linhas da tabela</comment>
+                </field>
+            </group>
+            
+            <!-- Grupo: Configurações do PDF -->
+            <group id="pdf_config" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações do PDF</label>
+                <field id="default_template" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template Padrão</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\TemplateOptions</source_model>
+                    <comment>Escolha o template padrão para geração de PDFs</comment>
+                </field>
+                <field id="paper_size" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho do Papel</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\PageSize</source_model>
+                </field>
+                <field id="orientation" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Orientação</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\PageOrientation</source_model>
+                </field>
+                <field id="show_specifications" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mostrar Especificações</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="footer_text" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Texto do Rodapé</label>
+                    <comment>HTML básico é permitido</comment>
+                </field>
+            </group>
+            
+            <!-- Grupo: Configurações de Imagens -->
+            <group id="images" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações de Imagens</label>
+                <field id="show_gallery" translate="label comment" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mostrar Galeria</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Incluir galeria de imagens no PDF</comment>
+                </field>
+                <field id="max_gallery_images" translate="label comment" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Máximo de Imagens na Galeria</label>
+                    <comment>Número máximo de imagens a serem exibidas na galeria</comment>
+                </field>
+                <field id="enable_image_type" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar Tipos de Imagem</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Habilitar suporte a diferentes tipos de imagem (dimensional, painel traseiro, etc)</comment>
+                </field>
+                <field id="show_dimensional" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mostrar Imagem Dimensional</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Exibir a segunda imagem como dimensional</comment>
+                    <depends>
+                        <field id="enable_image_type">1</field>
+                    </depends>
+                </field>
+                <field id="show_back_panel" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Mostrar Painel Traseiro</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Exibir a terceira imagem como painel traseiro</comment>
+                    <depends>
+                        <field id="enable_image_type">1</field>
+                    </depends>
+                </field>
+                <field id="image_quality" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Qualidade da Imagem</label>
+                    <validate>validate-number validate-digits-range digits-range-1-100</validate>
+                    <comment>Qualidade de compressão das imagens (1-100)</comment>
+                </field>
+            </group>
+            
+            <!-- Grupo: Configurações Avançadas -->
+            <group id="advanced" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações Avançadas</label>
+                <field id="cache_lifetime" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Tempo de Cache (segundos)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Tempo em segundos para armazenar PDFs em cache (0 = sem cache)</comment>
+                </field>
+                <field id="debug_mode" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Modo de Debug</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Ativar logs detalhados para solução de problemas</comment>
+                </field>
+                <field id="queue_enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar Fila</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Processar geração de PDFs em segundo plano</comment>
+                </field>
+                <field id="queue_batch_size" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho do Lote</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Número máximo de PDFs processados por vez</comment>
+                    <depends>
+                        <field id="queue_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="queue_retry_delay" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Intervalo de Tentativas (segundos)</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Tempo de espera entre tentativas de processamento</comment>
+                    <depends>
+                        <field id="queue_enabled">1</field>
+                    </depends>
+                </field>
+                <field id="queue_max_retries" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Máximo de Tentativas</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Número máximo de tentativas de processamento</comment>
+                    <depends>
+                        <field id="queue_enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Configurações de QR Code -->
+            <group id="qrcode" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Configurações de QR Code</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar QR Code</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Exibir QR Code no PDF do produto</comment>
+                </field>
+                <field id="size" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Tamanho do QR Code</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Tamanho em pixels do QR Code (recomendado: 100-200)</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="position" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Posição do QR Code</label>
+                    <source_model>Cortex\Pdf\Model\Config\Source\QrCodePosition</source_model>
+                    <comment>Posição do QR Code no PDF</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="margin" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Margem</label>
+                    <validate>validate-number validate-zero-or-greater</validate>
+                    <comment>Margem em pixels do QR Code (recomendado: 10-20)</comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+            
+            <!-- Grupo: Notificações -->
+            <group id="notification" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Notificações</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Habilitar Notificações</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="email_template" translate="label" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template de Email para Geração</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="error_email_template" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Template de Email para Erros</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Template</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="sender_email_identity" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Remetente</label>
+                    <source_model>Magento\Config\Model\Config\Source\Email\Identity</source_model>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+                <field id="recipient_email" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Email do Destinatário</label>
+                    <validate>validate-email</validate>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+        </section>
+    </system>
+</config> 

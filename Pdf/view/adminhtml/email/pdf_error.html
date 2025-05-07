@@ -1,0 +1,31 @@
+<!--@subject Alerta de Erro no Sistema de PDF - {{var store_name}} @-->
+<!--@vars {
+"var error_message":"Mensagem de Erro",
+"var context":"Contexto do Erro",
+"var store_name":"Nome da Loja",
+"var date":"Data e Hora"
+} @-->
+
+<div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
+    <div style="background-color: #f8f8f8; padding: 20px; border-radius: 5px;">
+        <h2 style="color: #333; margin-bottom: 20px;">Alerta de Erro no Sistema de PDF</h2>
+        
+        <p style="margin-bottom: 10px;"><strong>Loja:</strong> {{var store_name}}</p>
+        <p style="margin-bottom: 10px;"><strong>Data:</strong> {{var date}}</p>
+        
+        <div style="background-color: #f2dede; color: #a94442; padding: 15px; border-radius: 3px; margin-bottom: 20px;">
+            <h3 style="margin-top: 0; color: #a94442;">Mensagem de Erro:</h3>
+            <p style="margin-bottom: 10px;">{{var error_message}}</p>
+            
+            {{if context}}
+                <h4 style="margin-top: 15px; color: #a94442;">Contexto do Erro:</h4>
+                <pre style="background-color: #fff; padding: 10px; border-radius: 3px; overflow-x: auto;">{{var context}}</pre>
+            {{/if}}
+        </div>
+        
+        <p style="color: #666; font-size: 12px; margin-top: 20px;">
+            Esta é uma notificação automática do sistema de geração de PDF.
+            Por favor, verifique o sistema para resolver o problema.
+        </p>
+    </div>
+</div> 

@@ -1,0 +1,14 @@
+{
+  "title": "Template B\u00e1sico",
+  "layout": "default",
+  "sections": [
+    {
+      "label": "Caracter\u00edsticas",
+      "attributes": [
+        "name",
+        "sku",
+        "short_description"
+      ]
+    }
+  ]
+}

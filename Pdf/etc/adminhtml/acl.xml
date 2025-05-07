@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<acl xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xsi:noNamespaceSchemaLocation="urn:magento:framework:Acl/etc/acl.xsd">
+    <resources>
+        <resource id="Magento_Backend::admin">
+            <resource id="Cortex_Pdf::main" title="Cortex PDF" sortOrder="100">
+                <resource id="Cortex_Pdf::template_config" title="Templates de PDF"/>
+                <resource id="Cortex_Pdf::category_style" title="Estilos por Categoria"/>
+            </resource>
+        </resource>
+    </resources>
+</acl>

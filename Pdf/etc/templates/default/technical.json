@@ -1,0 +1,15 @@
+{
+  "title": "Template T\u00e9cnico",
+  "layout": "default",
+  "sections": [
+    {
+      "label": "Especifica\u00e7\u00f5es T\u00e9cnicas",
+      "attributes": [
+        "processor",
+        "ram",
+        "storage",
+        "interfaces"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,172 @@
+.template-editor {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.template-editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background: #f8f8f8;
+}
+
+.template-editor-header h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.template-editor-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.template-editor-actions button {
+    padding: 8px 15px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: background-color 0.2s;
+}
+
+.template-editor-actions .save-button {
+    background: #007bdb;
+    color: #fff;
+}
+
+.template-editor-actions .save-button:hover {
+    background: #006bb4;
+}
+
+.template-editor-actions .preview-button {
+    background: #6c757d;
+    color: #fff;
+}
+
+.template-editor-actions .preview-button:hover {
+    background: #5a6268;
+}
+
+.template-editor-toolbar {
+    display: flex;
+    gap: 10px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+    background: #f8f8f8;
+}
+
+.template-editor-toolbar button {
+    padding: 8px 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.template-editor-toolbar button:hover {
+    background: #f0f0f0;
+    border-color: #999;
+}
+
+.template-editor-content {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+.template-editor-preview {
+    flex: 1;
+    position: relative;
+    padding: 20px;
+    background: #fff;
+    overflow: auto;
+}
+
+.template-editor-properties {
+    width: 300px;
+    padding: 15px;
+    border-left: 1px solid #ccc;
+    background: #f8f8f8;
+    overflow-y: auto;
+}
+
+.template-element {
+    position: absolute;
+    cursor: move;
+    border: 1px solid transparent;
+    transition: border-color 0.2s;
+}
+
+.template-element:hover {
+    border-color: #007bdb;
+}
+
+.template-element.selected {
+    border-color: #007bdb;
+    box-shadow: 0 0 0 2px rgba(0, 123, 219, 0.25);
+}
+
+.property-item {
+    margin-bottom: 15px;
+}
+
+.property-item label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #333;
+}
+
+.property-item input {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.property-item input:focus {
+    border-color: #007bdb;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(0, 123, 219, 0.25);
+}
+
+/* Estilos específicos para elementos */
+.template-element h2 {
+    margin: 0;
+    padding: 10px;
+}
+
+.template-element p {
+    margin: 0;
+    padding: 10px;
+}
+
+.template-element img {
+    max-width: 100%;
+    height: auto;
+}
+
+.template-element table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.template-element table td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.template-element .specifications {
+    padding: 10px;
+    background: #f8f8f8;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+} 
